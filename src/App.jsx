@@ -1,0 +1,22 @@
+import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navigation from './components/Navigation/Navigation';
+import NotesList from './components/NotesList/NotesList';
+import NoteCreation from './components/NoteCreation/NoteCreation';
+import UserCreation from './components/UserCreation/UserCreation';
+
+function App() {
+  return (
+    <Router>
+      <Navigation />
+      <Routes>
+        <Route path="/" exact element={<NotesList />} />
+        <Route path="/edit/:id" element={<NoteCreation />} />
+        <Route path="/create" element={<NoteCreation />} />
+        <Route path="/user" element={<UserCreation />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
