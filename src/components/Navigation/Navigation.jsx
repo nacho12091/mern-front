@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navigation() {
+    const { pathname } = useLocation();
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
@@ -14,17 +16,17 @@ export default function Navigation() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="ms-auto navbar-nav">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">Notes</Link>
+                            <Link className={`nav-link${pathname === "/" ? " active" : ""}`} to="/">Notes</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/create">Create note</Link>
+                            <Link className={`nav-link${pathname === "/create" ? " active" : ""}`} to="/create">Create note</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/user">Create user</Link>
+                            <Link className={`nav-link${pathname === "/user" ? " active" : ""}`} to="/user">Create user</Link>
                         </li>
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav >
     )
 }

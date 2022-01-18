@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 export default function NoteCreation() {
 
     const { id } = useParams();
+    const { pathname } = useLocation();
 
     const [users, setUsers] = useState({
         isLoading: false,
@@ -34,8 +35,10 @@ export default function NoteCreation() {
         if (id) {
             fetchNoteData();
             setEditing(true);
+        } else {
+            setEditing(false);
         }
-    }, [id])
+    }, [id, pathname])
 
     useEffect(() => {
         const fetchUsersData = async () => {
@@ -97,7 +100,7 @@ export default function NoteCreation() {
     return (
         <div className="col-md-6 offset-md-3 card">
             <div className="card-header">
-                <h4>Note creation</h4>
+                <h4>Note {editing ? "edition" : "creation"}</h4>
             </div>
             <div className="card-body">
                 <form onSubmit={onSubmit}>
