@@ -14,9 +14,9 @@ function App() {
       <div className="container-fluid p-4">
         <Routes>
           <Route path="/" exact element={<NotesList />} />
-          <Route path="/edit/:id" element={<NoteCreation />} />
-          <Route path="/create" element={<NoteCreation />} />
-          <Route path="/user" element={<UserCreation />} />
+          <Route path="/edit/:id" exact element={<NoteCreation />} />
+          <Route path="/create" exact element={<NoteCreation />} />
+          <Route path="/user" exact element={<UserCreation />} />
         </Routes>
       </div>
     </Router>

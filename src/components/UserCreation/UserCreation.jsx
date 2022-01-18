@@ -93,10 +93,10 @@ export default function UserCreation() {
                         {users.data.map((el) =>
                             <li
                                 key={el._id}
-                                className="list-group-item list-group-item-action"
+                                className="d-flex justify-content-between align-items-center list-group-item list-group-item-action"
                             >
                                 {el.username}
-                                <button onClick={() => handleDeleteUser(el._id)}>Delete</button>
+                                <button className="btn btn-danger" onClick={() => handleDeleteUser(el._id)}>Delete</button>
                             </li>
                         )}
                     </ul>
